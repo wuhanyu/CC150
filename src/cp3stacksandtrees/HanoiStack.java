@@ -18,7 +18,7 @@ public class HanoiStack {
 	 */
 	static ArrayList<Stack<Integer>> rob = new ArrayList<Stack<Integer>>();
 	public static void main(String[] args) {
-		int n = 10;
+		int n = 3;
 		for (int i = 0; i < 3; i++){
 			Stack<Integer> s = new Stack<Integer>();
 			rob.add(s);
@@ -35,8 +35,10 @@ public class HanoiStack {
 	
 	static void move(int from, int to, int via, int n){
 		if (n == 1){
-			rob.get(to).push(rob.get(from).pop());
-			System.out.printf("%c -> %c\n", (char)('A' + from), (char)('A' + to));
+			int froms = rob.get(from).pop();
+			if (!rob.get(to).isEmpty() && froms > rob.get(to).peek()) System.out.println("Error");
+			rob.get(to).push(froms);
+			System.out.printf("move %d, %c -> %c\n", froms, (char)('A' + from), (char)('A' + to));
 		} else {
 			move(from, via, to, n - 1);
 			move(from, to, via, 1);
