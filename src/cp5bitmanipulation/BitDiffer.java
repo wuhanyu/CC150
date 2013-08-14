@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cp4bitmanipulation;
+package cp5bitmanipulation;
 
 /**
  * @author Simon
